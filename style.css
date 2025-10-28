@@ -1,0 +1,102 @@
+/* style.css - 已清理並修正的版本 */
+
+/* 全域重置與版面 */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #222;
+  color: #fff; /* 預設文字色 */
+}
+
+/* 畫布 */
+canvas {
+  display: block;
+  border: 1px solid #444;
+}
+
+/* 結果容器 */
+#result-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;  /* 若有人誤把 selected 加在 .options，這條會覆蓋掉不該套到子項目的樣式 */
+  .options.selected .option {
+    background: transparent;
+    color: #fff;
+  }
+  pointer-events: none;
+  z-index: 10;
+}
+
+.result-text {
+  font-size: 24px;
+  margin: 5px 0;
+  padding: 2px 5px;
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+}
+
+/* 選項容器與單一選項樣式 */
+/* 注意：不要在容器 (.options) 上設定 color，否則會影響全部子元素 */
+.options {
+  padding: 8px;
+}
+
+.option {
+  color: #fff; /* 非選項文字顏色 */
+  padding: 6px 10px;
+  margin: 4px 0;
+  display: block;
+  cursor: pointer;
+  background: transparent;
+  border-radius: 4px;
+  user-select: none;
+}
+
+/* 只針對被選中的單一選項（確保 selected 加在 .option 上，而不是 .options） */
+.option.selected {
+  color: #fff;
+  background-color: #000;
+}
+
+/* 正確 / 錯誤 樣式（不要把這些類加在容器上） */
+.option.correct {
+  color: #00ff00;
+}
+
+.option.incorrect {
+  color: #ff0000;
+}
+
+/* 強制非選項文字顏色（避免被其他較寬選擇器覆蓋） */
+.options .option {
+  color: #fff;
+}
+
+#restart-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #444;
+    color: white;
+    border: 1px solid #666;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+#restart-btn:hover {
+    background-color: #555;
+}
+
+/* 其他通用樣式可以放這裡 */
